@@ -1,0 +1,287 @@
+<!-- 2. Using Bootstrap grid system, design a 3-column portfolio section. On mobile 
+view, it should stack vertically. Add a custom CSS animation so that when the 
+section scrolls into view, each column fades in one by one.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>One Page Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            background: url('/images/download\ \(9\).jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #ffffffcc;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: #333 !important;
+        }
+
+        .nav-link:hover {
+            color: rgb(202, 17, 48) !important;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-weight: bold;
+            font-size: 2.5rem;
+            color: #222;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cards (Projects Section) */
+        .portfolio-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            border-top: 6px solid transparent;
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card-body {
+            padding: 20px;
+        }
+
+        .portfolio-card h5 {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .portfolio-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Color Borders */
+        .color-1 {
+            border-top-color: #ff6b6b;
+        }
+
+        .color-2 {
+            border-top-color: #4dabf7;
+        }
+
+        .color-3 {
+            border-top-color: #ffd43b;
+        }
+
+        /* Scroll Animation */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translate(60px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeUp 1s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.8s;
+        }
+
+        /* Contact Form */
+        .form-control,
+        .btn {
+            border-radius: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-2" href="#">MyPortfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item fs-5"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item fs-5"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item fs-5"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+<p class="lead">
+  Hello! I’m <span style="color: rgb(185, 13, 41); font-weight: bold;">BANU PRAVEENA</span>, a passionate web developer skilled in crafting dynamic, responsive websites using HTML, CSS, JavaScript, and Bootstrap. I enjoy turning ideas into intuitive, user-friendly interfaces and solving real-world problems through clean, efficient code.<br><br>
+  With a strong foundation in front-end technologies and a keen eye for design, I focus on building experiences that are both visually appealing and functionally robust. I’m always eager to learn new tools, stay updated with industry trends, and collaborate on projects that challenge me to grow. Whether it’s optimizing performance, refining UI/UX, or debugging tricky issues, I take pride in delivering quality work that makes an impact.
+</p>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-card color-1 delay-1">
+                        <img src="/images/babywebsite.png" alt="Project 1">
+                        <div class="portfolio-card-body">
+                            <h5>Baby Product Website</h5>
+                            <p>Responsive e-commerce website designed to showcase and sell baby Products.</p>
+                            <p>Link: <a href="https://prototype9babyproducts.onrender.com" target="_blank" rel="noopener noreferrer">https://prototype9babyproducts.onrender.com</a></p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-card color-2 delay-2">
+                        <img src="/images/bakerywebsite.png" alt="Project 2">
+                        <div class="portfolio-card-body">
+                            <h5>Bakery Website</h5>
+                            <p>A modern, visually appealing website for a bakery using python & Django.</p>
+                            <p>Link: <a href="https://prototype10bakerywebsite.onrender.com" target="_blank" rel="noopener noreferrer">https://prototype10bakerywebsite.onrender.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-card color-3 delay-3">
+                        <img src="/images/yogawebsite.png" alt="Project 3">
+                        <div class="portfolio-card-body">
+                            <h5>Meditation Dashboard</h5>
+                            <p>An analytics Dashboard built with react to track Meditation sessions and progress.</p>
+                            <p>Link: <a href="https://prototype11meditationwebsite.onrender.com" target="_blank" rel="noopener noreferrer">https://prototype11meditationwebsite.onrender.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background:linear-gradient(pink, plum);">
+        <p>&copy; 2025 MyPortfolio. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const options = { threshold: 0.2 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+
+            document.querySelectorAll('.portfolio-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

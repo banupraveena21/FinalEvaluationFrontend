@@ -1,0 +1,118 @@
+<!-- 6. Create a carousel with 3 images. Add JavaScript so that it auto-plays every 3 
+seconds and pauses when mouse hovers over the image. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auto-Play Carousel</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <style>
+    body {
+      background: url('/images/download\ \(1\).jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .carousel-container {
+      max-width: 800px;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel img {
+      object-fit: cover;
+      height: 450px;
+    }
+
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carousel-container">
+    <div id="customCarousel" class="carousel slide" data-bs-ride="carousel">
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+        <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#customCarousel" data-bs-slide-to="2"></button>
+      </div>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="/images/water.jpg" class="d-block w-100" alt="Slide 1">
+          <div class="carousel-caption text-white">
+            <h5>Serene Waters</h5>
+            <p>Experience the calm and beauty of nature.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/images/city.jpg" class="d-block w-100" alt="Slide 2">
+          <div class="carousel-caption text-white">
+            <h5>Futuristic City</h5>
+            <p>Explore the technology of tomorrow.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/images/adventure1.jpg" class="d-block w-100" alt="Slide 3">
+          <div class="carousel-caption text-white">
+            <h5>Adventure Awaits</h5>
+            <p>Get lost in the thrill of exploration.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#customCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#customCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Auto-play + Pause on Hover JavaScript -->
+  <script>
+    const carousel = document.querySelector('#customCarousel');
+    const bsCarousel = new bootstrap.Carousel(carousel, {
+      interval: 3000,   // 3 seconds
+      ride: 'carousel',
+      pause: false      // Override Bootstrap default
+    });
+
+    // Pause on hover manually
+    carousel.addEventListener('mouseenter', () => {
+      bsCarousel.pause();
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      bsCarousel.cycle();
+    });
+  </script>
+
+</body>
+</html>
